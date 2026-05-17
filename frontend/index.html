@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Client-side CSP fallback (primary enforcement is via backend response headers) -->
+    <!-- connect-src is intentionally permissive here: the backend's env-driven CSP header is authoritative -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+    <!-- FIX [H6]: Proper title - do not expose tech stack -->
+    <title>LexGuard AI — Enterprise Legal Document & Prompt Security</title>
+    <meta name="description" content="LexGuard AI: Automated contract auditing, prompt injection detection, and compliance governance for enterprise teams." />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

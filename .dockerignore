@@ -1,0 +1,17 @@
+frontend/node_modules
+backend/venv
+**/__pycache__
+*.pyc
+.env
+.env.*
+# FIX [H7]: Exclude git history (may contain credentials in past commits)
+.git
+.gitignore
+# Exclude docs and audit files from build context
+*.md
+README*
+SECURITY*
+# Exclude test and dev files
+*.test.*
+*.spec.*
+.DS_Store
