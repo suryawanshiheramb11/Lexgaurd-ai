@@ -8,39 +8,11 @@ import {
   Search, Bell, ChevronDown, MoreHorizontal
 } from 'lucide-react';
 import './App.css';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
+
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
-  // Auth State
-  const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('lexguard_user');
-    return saved ? JSON.parse(saved) : null;
-  });
-
-  const handleLoginSuccess = (credentialResponse) => {
-    try {
-      const decoded = jwtDecode(credentialResponse.credential);
-      const userData = {
-        name: decoded.name,
-        email: decoded.email,
-        picture: decoded.picture
-      };
-      setUser(userData);
-      localStorage.setItem('lexguard_user', JSON.stringify(userData));
-    } catch (error) {
-      console.error("Failed to decode token", error);
-    }
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem('lexguard_user');
-  };
-
-  const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "734327292275-c0h7n54bcl88ssu5q01344445qnh13b2.apps.googleusercontent.com";
-
+  
   const BASE = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.PROD ? "" : "http://localhost:8000");
 
   const [stats, setStats] = useState({
@@ -161,34 +133,6 @@ function App() {
   };
 
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      {!user ? (
-        <div className="login-container fade-in">
-          <div className="login-card glass-card">
-            <div className="logo-icon-wrapper" style={{ margin: '0 auto 20px', width: '60px', height: '60px' }}>
-              <Shield className="logo-icon" size={32} />
-            </div>
-            <h1 className="login-title">LexGuard<span className="logo-accent">AI</span></h1>
-            <p className="login-subtitle">Enterprise Legal Intelligence & Governance</p>
-            
-            <div className="google-login-wrapper">
-              <GoogleLogin
-                onSuccess={handleLoginSuccess}
-                onError={() => console.log('Login Failed')}
-                useOneTap
-                theme="filled_black"
-                shape="rectangular"
-                size="large"
-              />
-            </div>
-            
-            <div className="security-badges">
-              <span className="sec-badge"><Lock size={12}/> SOC2 Compliant</span>
-              <span className="sec-badge"><Shield size={12}/> End-to-End Encryption</span>
-            </div>
-          </div>
-        </div>
-      ) : (
     <div className="app-container">
       {/* Sidebar Navigation */}
       
@@ -227,11 +171,11 @@ function App() {
               <Bell size={18} />
               <span className="notification-dot"></span>
             </button>
-            <div className="user-profile" onClick={handleLogout} style={{cursor: 'pointer'}} title="Click to logout">
-              <img src={user.picture || "https://i.pravatar.cc/150?u=dev"} alt={user.name} className="avatar" />
+            <div className="user-profile">
+              <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Sarah Jenkins" className="avatar" />
               <div className="user-info">
-                <span className="user-name">{user.name}</span>
-                <span className="user-role">{user.email}</span>
+                <span className="user-name">Sarah Jenkins</span>
+                <span className="user-role">Chief Legal Officer</span>
               </div>
               <ChevronDown size={14} className="dropdown-icon" />
             </div>
@@ -562,8 +506,6 @@ function App() {
         </main>
       </div>
     </div>
-      )}
-    </GoogleOAuthProvider>
   );
 }
 
