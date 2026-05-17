@@ -182,12 +182,6 @@ function App() {
               />
             </div>
             
-            <div className="login-divider"><span>OR</span></div>
-            
-            <button className="dev-bypass-btn" onClick={() => setUser({ name: 'Developer Mode', email: 'dev@lexguard.ai', picture: 'https://i.pravatar.cc/150?u=dev' })}>
-              Continue in Developer Mode
-            </button>
-            
             <div className="security-badges">
               <span className="sec-badge"><Lock size={12}/> SOC2 Compliant</span>
               <span className="sec-badge"><Shield size={12}/> End-to-End Encryption</span>
