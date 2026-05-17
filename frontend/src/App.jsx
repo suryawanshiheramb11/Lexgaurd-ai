@@ -197,52 +197,31 @@ function App() {
       ) : (
     <div className="app-container">
       {/* Sidebar Navigation */}
-      <aside className="sidebar">
-        <div className="sidebar-brand">
-          <div className="logo-icon-wrapper">
-            <Shield className="logo-icon" size={24} />
-          </div>
-          <span className="logo-text">LexGuard<span className="logo-accent">AI</span></span>
-        </div>
-        
-        <nav className="sidebar-nav">
-          <button className={`sidebar-btn ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
-            <div className="sidebar-icon-box"><BarChart3 size={18} /></div>
-            <span>Dashboard</span>
-          </button>
-          <button className={`sidebar-btn ${activeTab === 'auditor' ? 'active' : ''}`} onClick={() => setActiveTab('auditor')}>
-            <div className="sidebar-icon-box"><FileSearch size={18} /></div>
-            <span>Document Library</span>
-          </button>
-          <button className={`sidebar-btn ${activeTab === 'prompt-shield' ? 'active' : ''}`} onClick={() => setActiveTab('prompt-shield')}>
-            <div className="sidebar-icon-box"><Terminal size={18} /></div>
-            <span>Threat Intelligence</span>
-          </button>
-          <button className={`sidebar-btn ${activeTab === 'advocate' ? 'active' : ''}`} onClick={() => setActiveTab('advocate')}>
-            <div className="sidebar-icon-box"><MessageSquare size={18} /></div>
-            <span>AI Advocate</span>
-          </button>
-        </nav>
-
-        <div className="sidebar-footer">
-          <div className="status-indicator">
-            <span className="pulse-dot"></span>
-            <span className="status-text">Active</span>
-            <span className="status-text secure"><Check size={14} /> Secure</span>
-          </div>
-        </div>
-      </aside>
+      
 
       {/* Main Content Wrapper */}
       <div className="main-wrapper">
         <header className="top-header">
-          <div className="header-left">
-            <h2 className="page-title">
-              {activeTab === 'dashboard' && 'Dashboard'}
-              {activeTab === 'auditor' && 'Document Library & Auditor'}
-              {activeTab === 'prompt-shield' && 'Threat Intelligence'}
-              {activeTab === 'advocate' && 'AI Advocate Chat'}
-            </h2>
+          <div className="header-left" style={{display: 'flex', alignItems: 'center'}}>
+            <div className="logo-icon-wrapper" style={{marginRight: '12px'}}>
+              <Shield className="logo-icon" size={20} />
+            </div>
+            <span className="logo-text" style={{marginRight: '30px', fontSize: '1.2rem'}}>LexGuard<span className="logo-accent">AI</span></span>
+            
+            <nav className="top-nav">
+              <button className={`top-nav-btn ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
+                <BarChart3 size={16} /> Dashboard
+              </button>
+              <button className={`top-nav-btn ${activeTab === 'auditor' ? 'active' : ''}`} onClick={() => setActiveTab('auditor')}>
+                <FileSearch size={16} /> Document Library
+              </button>
+              <button className={`top-nav-btn ${activeTab === 'prompt-shield' ? 'active' : ''}`} onClick={() => setActiveTab('prompt-shield')}>
+                <Terminal size={16} /> Threat Intelligence
+              </button>
+              <button className={`top-nav-btn ${activeTab === 'advocate' ? 'active' : ''}`} onClick={() => setActiveTab('advocate')}>
+                <MessageSquare size={16} /> AI Advocate
+              </button>
+            </nav>
           </div>
           
           <div className="header-right">

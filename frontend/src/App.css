@@ -1002,3 +1002,37 @@ h1, h2, h3, h4, h5, h6 {
 .sec-badge svg {
   color: var(--color-cyan);
 }
+
+
+/* === TOP NAV === */
+.top-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.top-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.top-nav-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.top-nav-btn.active {
+  color: var(--neon-cyan);
+  background: rgba(0, 240, 255, 0.1);
+}
