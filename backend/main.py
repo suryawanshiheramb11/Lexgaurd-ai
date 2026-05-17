@@ -1035,8 +1035,8 @@ async def analyze_document(
         if not document_text or len(document_text.strip()) == 0:
             raise HTTPException(status_code=400, detail="No document file or text provided for analysis.")
 
-        # As requested, do NOT use Gemini for document scanning
-        if False:
+        # Use Gemini for document scanning if initialized
+        if gemini_client_initialized:
             try:
                 # FIX [H4]: Sanitize filename before interpolating into prompt
                 safe_filename = re.sub(r"[^\w.\-]", "_", filename)[:80]
@@ -1326,8 +1326,8 @@ async def advocate_endpoint(request: Request):
 @app.post("/api/evaluate-prompt")
 async def evaluate_prompt(req: PromptEvalRequest):
     try:
-        # As requested, do NOT use Gemini for prompt evaluation
-        if False:
+        # Use Gemini for prompt evaluation if initialized
+        if gemini_client_initialized:
             try:
                 sys_prompt = "You are LexGuard Prompt Shield, an AI security guardrail expert specializing in LLM prompt injection, jailbreak prevention, PII leakage detection, and toxicity filtering. Output valid JSON only."
                 safe_prompt = req.prompt.replace('\\', '\\\\').replace('"', '\\"').replace('\n', ' ').replace('\r', '')[:8000]

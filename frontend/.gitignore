@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+coverage/
+.DS_Store
 
 # FIX [L1]: Ensure environment files are never committed
 .env

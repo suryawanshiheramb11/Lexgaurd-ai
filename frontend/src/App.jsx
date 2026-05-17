@@ -146,29 +146,29 @@ function App() {
             </div>
             <span className="logo-text" style={{marginRight: '30px', fontSize: '1.2rem'}}>LexGuard<span className="logo-accent">AI</span></span>
             
-            <nav className="top-nav">
-              <button className={`top-nav-btn ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
-                <BarChart3 size={16} /> Dashboard
+            <nav className="top-nav" aria-label="Main Navigation" role="tablist">
+              <button role="tab" aria-selected={activeTab === 'dashboard'} aria-controls="tabpanel-dashboard" className={`top-nav-btn ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
+                <BarChart3 size={16} aria-hidden="true" /> Dashboard
               </button>
-              <button className={`top-nav-btn ${activeTab === 'auditor' ? 'active' : ''}`} onClick={() => setActiveTab('auditor')}>
-                <FileSearch size={16} /> Document Library
+              <button role="tab" aria-selected={activeTab === 'auditor'} aria-controls="tabpanel-auditor" className={`top-nav-btn ${activeTab === 'auditor' ? 'active' : ''}`} onClick={() => setActiveTab('auditor')}>
+                <FileSearch size={16} aria-hidden="true" /> Document Library
               </button>
-              <button className={`top-nav-btn ${activeTab === 'prompt-shield' ? 'active' : ''}`} onClick={() => setActiveTab('prompt-shield')}>
-                <Terminal size={16} /> Threat Intelligence
+              <button role="tab" aria-selected={activeTab === 'prompt-shield'} aria-controls="tabpanel-prompt-shield" className={`top-nav-btn ${activeTab === 'prompt-shield' ? 'active' : ''}`} onClick={() => setActiveTab('prompt-shield')}>
+                <Terminal size={16} aria-hidden="true" /> Threat Intelligence
               </button>
-              <button className={`top-nav-btn ${activeTab === 'advocate' ? 'active' : ''}`} onClick={() => setActiveTab('advocate')}>
-                <MessageSquare size={16} /> AI Advocate
+              <button role="tab" aria-selected={activeTab === 'advocate'} aria-controls="tabpanel-advocate" className={`top-nav-btn ${activeTab === 'advocate' ? 'active' : ''}`} onClick={() => setActiveTab('advocate')}>
+                <MessageSquare size={16} aria-hidden="true" /> AI Advocate
               </button>
             </nav>
           </div>
           
           <div className="header-right">
             <div className="search-box">
-              <Search size={16} className="search-icon" />
-              <input type="text" placeholder="Search contracts, cases, anomalies..." />
+              <Search size={16} className="search-icon" aria-hidden="true" />
+              <input type="search" aria-label="Search" placeholder="Search contracts, cases, anomalies..." />
             </div>
-            <button className="icon-btn">
-              <Bell size={18} />
+            <button className="icon-btn" aria-label="Notifications">
+              <Bell size={18} aria-hidden="true" />
               <span className="notification-dot"></span>
             </button>
             <div className="user-profile">
@@ -182,9 +182,9 @@ function App() {
           </div>
         </header>
 
-        <main className="main-content">
+        <main className="main-content" aria-live="polite">
           {activeTab === 'dashboard' && (
-            <div className="tab-pane fade-in">
+            <div className="tab-pane fade-in" id="tabpanel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
               <div className="dashboard-grid-layout">
                 {/* Active Document Analysis Gauge */}
                 <div className="dash-card main-gauge-card glass-card">
@@ -300,7 +300,7 @@ function App() {
 
           {/* DOCUMENT AUDITOR TAB */}
           {activeTab === 'auditor' && (
-            <div className="tab-pane fade-in">
+            <div className="tab-pane fade-in" id="tabpanel-auditor" role="tabpanel">
               <div className="section-header">
                 <h2>Contract Auditor & Legal Risk Analyzer</h2>
                 <p>Upload your legal documents (PDF or DOCX) for automated multi-point risk analysis and compliance verification.</p>
@@ -385,7 +385,7 @@ function App() {
 
           {/* PROMPT SHIELD TAB */}
           {activeTab === 'prompt-shield' && (
-            <div className="tab-pane fade-in">
+            <div className="tab-pane fade-in" id="tabpanel-prompt-shield" role="tabpanel">
               <div className="section-header">
                 <h2>LLM Prompt Injection Shield</h2>
                 <p>Test and verify LLM prompts against known jailbreaks, adversarial attacks, and PII leakage before deploying to production.</p>
@@ -468,7 +468,7 @@ function App() {
 
           {/* AI ADVOCATE TAB */}
           {activeTab === 'advocate' && (
-            <div className="tab-pane fade-in">
+            <div className="tab-pane fade-in" id="tabpanel-advocate" role="tabpanel">
               <div className="section-header">
                 <h2>AI Legal Advocate</h2>
                 <p>Chat interactively with our compliance AI. If you analyzed a document, the AI is already aware of its contents.</p>
